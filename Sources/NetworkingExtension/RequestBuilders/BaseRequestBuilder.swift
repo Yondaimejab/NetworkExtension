@@ -7,9 +7,9 @@
 
 import UIKit
 
-class BaseRequestBuilder: RequestBuilder {
-    var router: Router
-    var requestContents: RequestContents
+public class BaseRequestBuilder: RequestBuilder {
+    public var router: Router
+    public var requestContents: RequestContents
     
     public init(router: Router, requestContents: RequestContents) {
         self.router = router

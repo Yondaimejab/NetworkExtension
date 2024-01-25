@@ -7,11 +7,11 @@
 
 import UIKit
 
-class EmptyRequestContents: RequestContents {
-    var body: [String : Any] = [:]
-    var method: String = "GET"
-    var params: [String: Any] = [:]
-    var headers: [String: String] = [:]
+public class EmptyRequestContents: RequestContents {
+    public var body: [String : Any] = [:]
+    public var method: String = "GET"
+    public var params: [String: Any] = [:]
+    public var headers: [String: String] = [:]
     
     public init() {}
 }
