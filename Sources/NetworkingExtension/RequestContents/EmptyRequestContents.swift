@@ -13,5 +13,5 @@ class EmptyRequestContents: RequestContents {
     var params: [String: Any] = [:]
     var headers: [String: String] = [:]
     
-    init() {}
+    public init() {}
 }
