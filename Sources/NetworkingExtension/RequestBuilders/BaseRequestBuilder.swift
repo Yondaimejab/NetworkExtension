@@ -9,10 +9,10 @@ import UIKit
 
 public class BaseRequestBuilder: RequestBuilder {
     public var router: Router
-    public var requestContents: RequestContents
+    public var contents: RequestContents
     
-    public init(router: Router, requestContents: RequestContents) {
+    public init(router: Router, contents: RequestContents) {
         self.router = router
-        self.requestContents = requestContents
+        self.contents = contents
     }
 }

@@ -7,24 +7,21 @@
 
 import UIKit
 import Foundation
-import Alamofire
 
 public protocol RequestBuilder {
     var router: Router { get set }
-    var requestContents: RequestContents { get set }
+    var contents: RequestContents { get set }
     var request: URLRequest? { get }
 }
 
 extension RequestBuilder {
-    public var request: URLRequest? { buildRequest(using: router, addingContents: requestContents) }
+    public var request: URLRequest? { buildRequest(using: router, addingContents: contents) }
     
     private func buildRequest(using router: Router, addingContents contents: RequestContents) -> URLRequest? {
         guard let url = buildURL(using: router, params: contents.params) else { return nil }
-        guard var request = try? URLRequest(
-            url: url,
-            method: .init(rawValue: contents.method),
-            headers: .init(contents.headers)
-        ) else { return nil }
+        var request = URLRequest(url: url)
+        request.allHTTPHeaderFields = contents.headers
+        request.httpMethod = contents.method
         let shouldNotAddBody = (["GET", "DELETE"].contains(contents.method)) || contents.body.isEmpty
         guard !shouldNotAddBody else { return request }
         request.httpBody = try? JSONSerialization.data(withJSONObject: contents.body)
@@ -38,6 +35,6 @@ extension RequestBuilder {
                 URLQueryItem(name: key, value: String(describing: value))
             }
         }
-        return try? components.asURL()
+        return components.url
     }
 }
