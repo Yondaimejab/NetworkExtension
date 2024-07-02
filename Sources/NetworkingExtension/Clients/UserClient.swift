@@ -8,7 +8,7 @@
 import UIKit
 
 class UserClient: Client {
-    private var router = Router(baseURL: "https://jsonplaceholder.typicode.com/")
+    private let router = Router(baseURL: "https://jsonplaceholder.typicode.com/")
     
     func fetch(identifiedBy identifier: Int) async throws -> User {
         router.path = "users/\(identifier)"

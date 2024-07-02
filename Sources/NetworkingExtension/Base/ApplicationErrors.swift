@@ -9,11 +9,11 @@ import UIKit
 
 protocol ApplicationError: Error, CustomStringConvertible { }
 
-class BuildRequestError: ApplicationError {
+struct BuildRequestError: ApplicationError {
     var description: String { "Failed To Build Request from router and contents" }
 }
 
-class RequestInvalidStatusCode: ApplicationError {
+struct RequestInvalidStatusCode: ApplicationError {
     var description: String { "The Request Returned an invalid status code" }
 }
 
