@@ -10,6 +10,5 @@ import UIKit
 public protocol RequestContents {
     var method: String { get set }
     var params: [String: Any] { get set }
-    var body: [String: Any] { get set }
     var headers: [String: String] { get set }
 }

@@ -22,9 +22,9 @@ extension RequestBuilder {
         var request = URLRequest(url: url)
         request.allHTTPHeaderFields = contents.headers
         request.httpMethod = contents.method
-        let shouldNotAddBody = (["GET", "DELETE"].contains(contents.method)) || contents.body.isEmpty
+        let shouldNotAddBody = (["GET", "DELETE"].contains(contents.method))
         guard !shouldNotAddBody else { return request }
-        request.httpBody = try? JSONSerialization.data(withJSONObject: contents.body)
+        request.httpBody = try? JSONSerialization.data(withJSONObject: contents.params)
         return request
     }
     
