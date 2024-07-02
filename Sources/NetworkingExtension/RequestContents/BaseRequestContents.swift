@@ -13,7 +13,7 @@ public class BaseRequestContents: RequestContents {
     public var params: [String: Any]
     public var headers: [String: String]
     
-    init(
+    public init(
         body: [String: Any] = [:],
         method: String = "GET",
         params: [String: Any] = [:],

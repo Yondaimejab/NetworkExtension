@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol ApplicationError: Error, CustomStringConvertible { }
+public protocol ApplicationError: Error, CustomStringConvertible { }
 
-struct BuildRequestError: ApplicationError {
-    var description: String { "Failed To Build Request from router and contents" }
+public struct BuildRequestError: ApplicationError {
+    public var description: String { "Failed To Build Request from router and contents" }
 }
 
-struct RequestInvalidStatusCode: ApplicationError {
-    var description: String { "The Request Returned an invalid status code" }
+public struct RequestInvalidStatusCode: ApplicationError {
+    public var description: String { "The Request Returned an invalid status code" }
 }
 

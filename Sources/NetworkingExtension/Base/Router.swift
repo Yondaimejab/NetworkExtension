@@ -8,10 +8,10 @@
 import UIKit
 
 public class Router {
-    let baseURL: String
-    var path: String
+    public let baseURL: String
+    public var path: String
     
-    init(baseURL: String, path: String = "") {
+    public init(baseURL: String, path: String = "") {
         self.baseURL = baseURL
         self.path = path
     }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Client {
+public protocol Client {
     associatedtype Model: Decodable
     associatedtype Identifier
     
