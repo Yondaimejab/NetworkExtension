@@ -1,16 +1,14 @@
 //
 //  EmptyRequestContents.swift
-//  
+//
 //
 //  Created by Joel Alcantara on 25/1/24.
 //
 
-import UIKit
-
-public class BaseRequestContents: RequestContents {
-    public var method: String
-    public var params: [String: Any]
-    public var headers: [String: String]
+public struct BaseRequestContents: RequestContents {
+    public let method: String
+    public let params: [String: Any]
+    public let headers: [String: String]
     
     public init(
         method: String = "GET",
