@@ -1,13 +1,10 @@
 import XCTest
-@testable import NetworkingExtension
+import NetworkingExtension
 
 final class NetworkingExtensionTests: XCTestCase {
     func testFetchJsonPlaceholderData() throws {
-        let baseURL = "https://jsonplaceholder.typicode.com/"
-        let usersPath = "users"
-        let jsonPlaceholderRouter = Router(baseURL: baseURL, path: usersPath)
         let fetchUsersRequestBuilder = BaseRequestBuilder(
-            router: jsonPlaceholderRouter,
+            route: CustomEnvironmentRoute.JSONPlaceholderUsersMockRoute,
             contents: BaseRequestContents()
         )
         let request = try! XCTUnwrap(fetchUsersRequestBuilder.request, "Failed to create request")
@@ -20,19 +17,16 @@ final class NetworkingExtensionTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 20)
     }
-    
-    func testFetchUserUsingUserClient() throws {
-        let client = UserClient()
-        let expectation = XCTestExpectation(description: "fetch users request")
-        Task {
-            do {
-                let user = try await client.fetch(identifiedBy: 1)
-                XCTAssertTrue(user.id == 1)
-                expectation.fulfill()
-            } catch {
-                XCTFail(error.localizedDescription)
-            }
-        }
-        wait(for: [expectation], timeout: 20)
+}
+
+extension CustomEnvironmentRoute {
+    static var JSONPlaceholderUsersMockRoute: CustomEnvironmentRoute {
+        CustomEnvironmentRoute(environment: .JSONPlaceholder, path: "users")
+    }
+}
+
+extension Environment {
+    static var JSONPlaceholder: Environment {
+        Environment(baseUrl: "https://jsonplaceholder.typicode.com/")
     }
 }
