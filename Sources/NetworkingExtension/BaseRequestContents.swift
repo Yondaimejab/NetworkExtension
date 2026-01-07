@@ -6,17 +6,20 @@
 //
 
 public struct BaseRequestContents: RequestContents {
-    public let method: String
-    public let params: [String: Any]
+    public let method: HTTPMethod
+    public let queryParameters: [String: Any]
     public let headers: [String: String]
+    public let body: RequestBody?
     
     public init(
-        method: String = "GET",
-        params: [String: Any] = [:],
-        headers: [String: String] = [:]
+        method: HTTPMethod = .get,
+        queryParameters: [String: Any] = [:],
+        headers: [String: String] = [:],
+        body: RequestBody? = nil
     ) {
         self.method = method
-        self.params = params
+        self.queryParameters = queryParameters
         self.headers = headers
+        self.body = body
     }
 }

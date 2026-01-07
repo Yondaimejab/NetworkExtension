@@ -5,10 +5,11 @@
 //  Created by Joel Alcantara on 25/1/24.
 //
 
-import UIKit
+import Foundation
 
 public protocol RequestContents {
-    var method: String { get }
-    var params: [String: Any] { get }
+    var method: HTTPMethod { get }
+    var queryParameters: [String: Any] { get }
     var headers: [String: String] { get }
+    var body: RequestBody? { get }
 }
